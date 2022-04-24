@@ -11,6 +11,7 @@ type Post = {
 const postsIndex: NextPage = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [posts, setPosts] = useState<Post[]>([])
+    const [isEmpty,setIsEmpty] = useState(false)
     useEffect(() => {
         setIsLoading(true)
         axios.get('api/v1/posts').then(x => {
@@ -23,6 +24,7 @@ const postsIndex: NextPage = () => {
         <div>
             <h1>文章</h1>
             {isLoading?<div>加载中</div>:
+                isEmpty?<div>没有完整</div>:
             posts.map(p => <div key={p.id}>
                 {p.id}
             </div>)}
