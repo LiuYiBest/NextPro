@@ -1,6 +1,7 @@
 import NextPage from 'next'
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
+import {usePosts} from "../../hooks/usePosts";
 
 type Post = {
     id: string;
@@ -9,17 +10,7 @@ type Post = {
 }
 // @ts-ignore
 const postsIndex: NextPage = () => {
-    const [isLoading, setIsLoading] = useState(false)
-    const [posts, setPosts] = useState<Post[]>([])
-    const [isEmpty,setIsEmpty] = useState(false)
-    useEffect(() => {
-        setIsLoading(true)
-        axios.get('api/v1/posts').then(x => {
-            console.log('xxx', x)
-        }, () => {
-            setIsLoading(false)
-        })
-    }, [])
+const {isLoading,isEmpty,posts} = usePosts()
     return (
         <div>
             <h1>文章</h1>
