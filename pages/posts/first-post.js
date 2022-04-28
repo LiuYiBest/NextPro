@@ -3,6 +3,7 @@ import Link from "next/link";
 import {Head} from "next/document";
 
 console.log('执行了')
+//自定义页面执行
 export  default function fnc(){
     return(
         <React.Fragment>
